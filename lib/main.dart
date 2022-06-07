@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:theapp/buy_crypto/buy_crypto_screen.dart';
+import 'package:theapp/buy_crypto/buycrypto_screen_viewmodel.dart';
 import 'package:theapp/landingPage/landing_screen.dart';
 
 import './landingPage/landing_screen_viewmodel.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LandingScreenViewModel()),
+        ChangeNotifierProvider(create: (_) => BuyCryptoScreenViewModel()),
       ],
       child: MaterialApp(
         title: 'MoonPay',
