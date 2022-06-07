@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         ),
         home: const HomePage(),
         routes: {
-          LandingScreen.routeName: (context) => const LandingScreen(),
+          HomePage.routeName: (context) => const HomePage(),
           BuyCryptoScreen.routeName: (context) => const BuyCryptoScreen(),
         },
       ),
@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  static const routeName = '/home_screen';
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -46,16 +47,17 @@ class HomePage extends StatelessWidget {
       body: Container(
         color: Colors.white,
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: const [
-              NavBar(),
-              Padding(
+        child: Column(
+          children: const [
+            NavBar(),
+            Expanded(
+              child: SingleChildScrollView(
+                  child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
                 child: LandingScreen(),
-              )
-            ],
-          ),
+              )),
+            ),
+          ],
         ),
       ),
     );

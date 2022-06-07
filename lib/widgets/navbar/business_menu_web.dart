@@ -20,7 +20,7 @@ class BusinessPopupMenuWeb extends StatelessWidget {
       itemBuilder: (context) => [
         PopupMenuItem(
             enabled: false,
-            padding: EdgeInsets.zero,
+            padding: const EdgeInsets.all(0.0),
             child: SizedBox(
               width: 250,
               child: Column(
@@ -79,7 +79,7 @@ class BusinessPopupMenuWeb extends StatelessWidget {
                   ),
                   const SizedBox(height: 10.0),
                   Container(
-                    padding: const EdgeInsets.only(left: 25.0, bottom: 20.0),
+                    padding: const EdgeInsets.only(left: 25.0, bottom: 30.0),
                     width: double.infinity,
                     color: Colors.grey.shade200,
                     child: Column(

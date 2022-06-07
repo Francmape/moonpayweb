@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:theapp/buy_crypto/buy_crypto_screen.dart';
-import 'package:theapp/widgets/navbar/business_menu_web.dart';
+import 'package:theapp/landingPage/landing_screen.dart';
+import 'package:theapp/main.dart';
+import '../../buy_crypto/buy_crypto_screen.dart';
+import '../../widgets/navbar/business_menu_web.dart';
 
 import '../../landingPage/landing_screen_viewmodel.dart';
 import 'business_menu_mobile.dart';
 import 'button_navbar.dart';
-import 'navbar_list_tile.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -40,7 +41,8 @@ class WebNavBar extends StatelessWidget {
           Row(
             children: [
               TextButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(HomePage.routeName),
                   child: const Text("MoonPay",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,

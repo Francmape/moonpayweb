@@ -1,10 +1,43 @@
 import 'package:flutter/material.dart';
 
+import '../utils/constants.dart';
 import 'button_circular.dart';
 import 'footer_social_media.dart';
 
 class Footer {
-  Widget footerLeft(BuildContext context) {
+  static Widget appFooter(BoxConstraints constraints, BuildContext context) {
+    return Container(
+      color: Colors.black,
+      width: double.infinity,
+      child: constraints.maxWidth > Device.smallScreen
+          ? Column(
+              children: [
+                footerTop(),
+                const Divider(),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          child: Row(children: [
+                        Expanded(child: footerLeft(context)),
+                        Expanded(child: footerRight())
+                      ]))
+                    ]),
+              ],
+            )
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                footerTop(),
+                const Divider(),
+                footerLeft(context),
+                footerRight(),
+              ],
+            ),
+    );
+  }
+
+  static Widget footerLeft(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(60.0),
       child: Column(
@@ -31,9 +64,9 @@ class Footer {
           Row(
             children: [
               const Icon(Icons.ac_unit_rounded, color: Colors.white),
-              const SizedBox(width: 10),
+              const SizedBox(width: 5.0),
               CircularWhiteButton(text: "Buy crypto", onTap: () {}),
-              const SizedBox(width: 10),
+              const SizedBox(width: 5.0),
               CircularWhiteButton(text: "Sell crypto", onTap: () {})
             ],
           ),
@@ -66,7 +99,7 @@ class Footer {
     );
   }
 
-  Widget footerRight() {
+  static Widget footerRight() {
     return Padding(
       padding: const EdgeInsets.all(60.0),
       child: Column(
@@ -89,7 +122,10 @@ class Footer {
             children: [
               Expanded(
                 flex: 1,
-                child: CircularWhiteButton(text: "Subscribe", onTap: () {}),
+                child: SizedBox(
+                    height: 50,
+                    child:
+                        CircularWhiteButton(text: "Subscribe", onTap: () {})),
               ),
               Expanded(
                   flex: 1,
@@ -113,6 +149,34 @@ class Footer {
             ],
           )
         ],
+      ),
+    );
+  }
+
+  static Widget footerTop() {
+    return Padding(
+      padding: const EdgeInsets.all(60.0),
+      child: Wrap(
+        spacing: 8.0, // gap between adjacent chips
+        runSpacing: 8.0, // gap between lines
+        children: MyLists.list
+            .map(
+              (e) => TextButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: const BorderSide(color: Colors.white)))),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      e,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  )),
+            )
+            .toList(),
       ),
     );
   }

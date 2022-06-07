@@ -17,7 +17,7 @@ class CircularWhiteButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(25.0),
             ))),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 7.0),
           child: Text(
             text,
             style: const TextStyle(color: Colors.black),

@@ -4,14 +4,14 @@ import 'package:theapp/utils/constants.dart';
 import 'getting_started.dart';
 
 class LandingScreen extends StatelessWidget {
-  static const routeName = '/landing_screen';
+
   const LandingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: ((context, constraints) {
-        if (constraints.maxWidth > 800) {
+        if (constraints.maxWidth > Device.smallScreen) {
           return Column(
             children: [
               Row(
@@ -20,18 +20,7 @@ class LandingScreen extends StatelessWidget {
               ),
               GettingStarted(constraints: constraints),
               const SizedBox(height: 20),
-              Container(
-                  color: Colors.black,
-                  width: double.infinity,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                            child: Row(children: [
-                          Expanded(child: Footer().footerLeft(context)),
-                          Expanded(child: Footer().footerRight())
-                        ]))
-                      ])),
+              Footer.appFooter(constraints, context)
             ],
           );
         } else {
@@ -42,16 +31,7 @@ class LandingScreen extends StatelessWidget {
                   children: pageTopChildren(constraints)),
               GettingStarted(constraints: constraints),
               const SizedBox(height: 20),
-              Container(
-                color: Colors.black,
-                width: double.infinity,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Footer().footerLeft(context),
-                      Footer().footerRight()
-                    ]),
-              ),
+              Footer.appFooter(constraints, context)
             ],
           );
         }
